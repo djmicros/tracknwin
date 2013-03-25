@@ -1,0 +1,10 @@
+<div id="invites" class="well well-large" >
+	<h4>People you invited:</h4>
+<% @pending_invites.each do |invite|%>
+
+<%= link_to  :controller => "users", :action => "show", :id => invite[:id] do %>
+                  <%= invite[:name] %>
+<% end %>
+</br>
+<% end %>
+</div>

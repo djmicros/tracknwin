@@ -1,0 +1,16 @@
+<% if current_user.friend_with?(@user) %>
+			<div id="friend">
+				<h4>Friend<h4>
+			</div>
+         <% elsif current_user.invited?(@user) %>
+			<div id="friend">
+				<h4>Pending request...<h4>
+			</div>
+        <% else %>
+			<% if @user != current_user %>
+			<div id="friend">
+				<%= link_to "Add as a friend", friends_path(:user_id => @user), :method => "post", class: "btn" %>
+			</div>
+		</br>
+		<% end %>
+<% end %>

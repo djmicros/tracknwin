@@ -1,0 +1,22 @@
+<div id="requests" class="well well-large" >
+  <h4>People who invited you to become a friend:</h4>
+  <% if @pending_requests.empty? != true %>
+<% for i in (0..@pending_requests.count-1) do %>
+<div id="friend" class="well">
+  <%= gravatar_for @pending_requests[i], size: 52 %>
+<%= link_to  :controller => "users", :action => "show", :id => @pending_requests[i][:id] do %>
+                  <%= @pending_requests[i][:name] %>
+<% end %>
+</br>
+
+<%= link_to "Confirm", friend_path(@pending_requests[i][:id]), :method => "put", class: "btn btn-small btn-success" %>
+
+<%= link_to "Ignore", friend_path(@pending_requests[i][:id]), :method => "delete", class: "btn btn-small btn-danger" %>
+
+</br>
+</div>
+<% end %>
+<% else %>
+You have no requests.
+<% end %>
+</div>

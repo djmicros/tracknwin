@@ -1,0 +1,70 @@
+<% provide(:title, 'My friends') %>
+<h1>My friends</h1>
+<div class="tabbable"> 
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#friends" data-toggle="tab">My friends</a></li>
+    <li><a href="#requests" data-toggle="tab">Requests</a></li>
+	<li><a href="#invites" data-toggle="tab">My Invites</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="friends">
+        <h4>My friends:</h4>
+		<% if @friends != nil %>
+		<% for i in (0..@friends.count-1) do %>
+		<div id="friend" class="well">
+		<%= gravatar_for @friends[i], size: 52 %>
+		<%= link_to  :controller => "users", :action => "show", :id => @friends[i][:id] do %>
+                  <%= @friends[i][:name] %>
+		<% end %>
+		</br>
+		<%= link_to "Unfriend", friend_path(@friends[i][:id]), :method => "delete", class: "btn btn-small btn-danger", data: { confirm: "You sure?" } %>
+		</br>
+		</div>
+		<% end %>
+		<% else %>
+			You have no friends.
+		<% end %>
+		</div>
+    <div class="tab-pane" id="requests">
+		<h4>People who invited you to become a friend:</h4>
+		<% if @pending_requests != nil %>
+		<% for i in (0..@pending_requests.count-1) do %>
+		<div id="friend" class="well">
+		<%= gravatar_for @pending_requests[i], size: 52 %>
+		<%= link_to  :controller => "users", :action => "show", :id => @pending_requests[i][:id] do %>
+                  <%= @pending_requests[i][:name] %>
+		<% end %>
+		</br>
+		<%= link_to "Confirm", friend_path(@pending_requests[i][:id]), :method => "put", class: "btn btn-small btn-success" %>
+		<%= link_to "Ignore", friend_path(@pending_requests[i][:id]), :method => "delete", class: "btn btn-small btn-danger" %>
+		</br>
+		</div>
+		<% end %>
+		<% else %>
+			You have no requests.
+		<% end %>
+		</div>
+	<div class="tab-pane" id="invites">
+		<h4>People you invited:</h4>
+		<% if @pending_invites != nil %>
+		<% for i in (0..@pending_invites.count-1) do %>
+		<div id="invite" class="well">
+		<%= gravatar_for @pending_invites[i], size: 52 %>
+		<%= link_to  :controller => "users", :action => "show", :id => @pending_invites[i][:id] do %>
+                  <%= @pending_invites[i][:name] %>
+		<% end %>
+		</br>
+		</br>
+		</div>
+		</br>
+		<% end %>
+		<% else %>
+			You have not invited anyone yet.
+		<% end %>
+		</div>
+		</div>
+		</div>
+
+
+
+

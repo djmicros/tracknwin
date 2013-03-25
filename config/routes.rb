@@ -1,6 +1,7 @@
 Tracknwin::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :friends, :controller => 'friendships', :except => [:show, :edit]
   
   root to: 'static_pages#home'
   
