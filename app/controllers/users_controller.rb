@@ -46,6 +46,23 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  	def androidlogin
+	#require "cgi"
+	#cgi_request = CGI::new()
+	if request.post?
+	username = params[:username]
+	password = params[:password]
+	if username != "admin" && password != "admin"
+	render :inline => "false"
+	else
+	render :inline => "true"
+	end
+	else
+	redirect_to signin_url, notice: "There is no place for you ;)"
+	end
+	#render :nothing => true, :status => 500
+
+	end	
   
   
   private
@@ -65,4 +82,6 @@ class UsersController < ApplicationController
 	def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
+	
+	
 end
