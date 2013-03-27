@@ -53,9 +53,10 @@ class UsersController < ApplicationController
 		if User.find_by_email(username) != nil
 			user = User.find_by_email(username)
 				if user.authenticate(password)
-					response = []
-					response[0] = user.name
-					response[1] = user.remember_token
+					response = [imie: user.name, nazwisko: "kuciel", login: user.email, haslo: user.remember_token]
+
+					#response[0] = user.name
+					#response[1] = user.remember_token
 					jsonresponse = response.to_json
 					#jsonresponse = 
 					render :inline => jsonresponse
