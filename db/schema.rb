@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325114442) do
+ActiveRecord::Schema.define(:version => 20130327104811) do
 
   create_table "friendships", :force => true do |t|
     t.integer "friendable_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130325114442) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
+    t.string   "apptoken"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

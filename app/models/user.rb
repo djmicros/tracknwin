@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :rides, dependent: :destroy
 	
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :apptoken
   has_secure_password
 
   before_save { |user| user.email = email.downcase }

@@ -47,21 +47,22 @@ class UsersController < ApplicationController
   end
   
   def androidlogin
-	#require "cgi"
-	#cgi_request = CGI::new()
 	if request.post?
 	username = params[:username]
 	password = params[:password]
-	if User.find_by_email(username) != nil
-	user = User.find_by_email(username)
-	if user.authenticate(password)
-	render :inline => "true"
-	else
-	render :inline => "false"
-	end
-	else
-	render :inline => "false"
-	end
+		if User.find_by_email(username) != nil
+			user = User.find_by_email(username)
+				if user.authenticate(password)
+					token = SecureRandom.hex(16)
+					user.apptoken = token
+					user.save
+					render :inline => token
+				else
+					render :inline => "false"
+				end
+		else
+			render :inline => "false"
+		end
 	else
 	redirect_to signin_url, notice: "There is no place for you ;)"
 	end
