@@ -16,7 +16,6 @@ gem 'bootstrap-will_paginate', '0.0.6'
 
 # gem 'sqlite3'
 
-
 gem 'amistad'
 
 
@@ -50,8 +49,9 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '0.12.2'
 end
-group :development, :test do
-  gem 'sqlite3'
+
+group :development do
+  gem 'sqlite3', '1.3.5'
 end
