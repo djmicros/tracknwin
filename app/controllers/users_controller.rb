@@ -52,10 +52,15 @@ class UsersController < ApplicationController
 	if request.post?
 	username = params[:username]
 	password = params[:password]
-	if username != "admin" && password != "admin"
-	render :inline => "false"
-	else
+	if User.find_by_email(username) != nil
+	user = User.find_by_email(username)
+	if user.authenticate(password)
 	render :inline => "true"
+	else
+	render :inline => "false"
+	end
+	else
+	render :inline => "false"
 	end
 	else
 	redirect_to signin_url, notice: "There is no place for you ;)"
