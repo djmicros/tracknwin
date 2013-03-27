@@ -53,10 +53,12 @@ class UsersController < ApplicationController
 		if User.find_by_email(username) != nil
 			user = User.find_by_email(username)
 				if user.authenticate(password)
-					token = SecureRandom.hex(16)
-					user.apptoken = token
-					user.save
-					render :inline => token
+					response = []
+					response[0] = user.name
+					response[1] = user.remember_token
+					jsonresponse = response.to_json
+					#jsonresponse = 
+					render :inline => jsonresponse
 				else
 					render :inline => "false"
 				end
