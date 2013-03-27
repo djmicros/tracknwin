@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 		if User.find_by_email(username) != nil
 			user = User.find_by_email(username)
 				if user.authenticate(password)
-					response = [imie: user.name, nazwisko: "kuciel", login: user.email, haslo: user.remember_token]
+					response = ""+user.name+"&"+user.email+"&"+user.remember_token+""
 
 					#response[0] = user.name
 					#response[1] = user.remember_token
