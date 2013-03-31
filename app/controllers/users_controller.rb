@@ -72,6 +72,26 @@ class UsersController < ApplicationController
 	#render :nothing => true, :status => 500
 
 	end	
+	
+	def androidregister
+	if request.post?
+	@user = User.new(params[:user])
+    if @user.save
+			render :inline => "true"
+    else
+	errors = "Errors: "
+	@user.errors.full_messages.each do |msg| 
+		errors = errors + msg + ", "
+	end
+      
+      		render :inline => errors
+    end
+
+	else
+	redirect_to signin_url, notice: "There is no place for you ;)"
+	end
+
+	end	
   
   
   
