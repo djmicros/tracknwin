@@ -178,3 +178,119 @@ input {
     }
   }
 }
+.navbar.navbar-fixed-top {
+height: 60px;
+}
+.navbar.navbar-inverse {
+margin-top: -20px;
+}
+
+.sub-nav {
+height: 200px;
+text-align: center;
+margin: 0px 0px 0px -35px;
+}
+
+.sub-nav ul {
+text-align: center;
+}
+
+.sub-nav li {
+margin: 15px 15px 15px 15px;
+width: 100px;
+height: 80px;
+padding-top: 20px;
+list-style-type: none;
+display: inline-block;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.sub-nav li:hover {
+background-color: #555;
+}
+
+.sub-nav li a {
+color: white;
+text-decoration: none;
+height: 100px;
+width: 100px;
+}
+
+.sub-nav ul a:hover {
+backgroud-color: #555;
+text-decoration: none;
+}
+
+.batch {
+text-align:center;
+}
+
+.profile {
+background-image: url('/assets/profile.png');
+display: inline-block;
+height: 40px;
+width: 40px;
+margin: 0px 30px 0px 30px;
+}
+
+.rides {
+background-image: url('/assets/rides.png');
+display: inline-block;
+height: 40px;
+width: 40px;
+margin: 0px 30px 0px 30px;
+}
+
+.stats {
+background-image: url('/assets/stats.png');
+display: inline-block;
+height: 40px;
+width: 40px;
+margin: 0px 30px 0px 30px;
+}
+
+.users {
+background-image: url('/assets/users.png');
+display: inline-block;
+height: 40px;
+width: 40px;
+margin: 0px 30px 0px 30px;
+}
+
+.friends {
+background-image: url('/assets/friends.png');
+display: inline-block;
+height: 40px;
+width: 40px;
+margin: 0px 30px 0px 30px;
+}
+
+.settings {
+background-image: url('/assets/settings.png');
+display: inline-block;
+height: 40px;
+width: 40px;
+margin: 0px 30px 0px 30px;
+}
+
+.signout {
+background-image: url('/assets/signout.png');
+display: inline-block;
+height: 40px;
+width: 40px;
+margin: 0px 30px 0px 30px;
+}
+
+.row {
+margin-top: -90px;
+background-color: white;
+min-height: 100px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+padding: 20px 20px 20px 20px;
+}

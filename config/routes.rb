@@ -18,7 +18,7 @@ Tracknwin::Application.routes.draw do
   match '/androidlogin', to: 'users#androidlogin'
   match '/androidregister', to: 'users#androidregister'
   match '/androidaddride', to: 'rides#androidaddride'
-  match "/rides/:id" => "rides#show"
+  match '/rides/:id' => 'rides#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

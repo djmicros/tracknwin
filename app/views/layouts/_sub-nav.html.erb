@@ -1,0 +1,82 @@
+
+          <% if signed_in? %>
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+       <nav>
+        <ul class="sub-nav">
+		
+		<li>
+			<%= link_to current_user do%>
+			<div class="batch">
+			<i class="profile"></i>
+			<br>
+			Profile
+			</div>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to current_user do%>
+				<div class="batch">
+				<i class="rides"></i>
+				<br>
+				Rides
+				</div>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to current_user do%>
+				<div class="batch">
+				<i class="stats"></i>
+				<br>
+				Stats
+				</div>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to users_path do%>
+				<div class="batch">
+				<i class="users"></i>
+				<br>
+				Users
+				</div>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to friends_path do%>
+				<div class="batch">
+				<i class="friends"></i>
+				<br>
+				Friends
+				</div>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to edit_user_path(current_user) do%>
+				<div class="batch">
+				<i class="settings"></i>
+				<br>
+				Settings
+				</div>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to signout_path, method: "delete" do%>
+				<div class="batch">
+				<i class="signout"></i>
+				<br>
+				Sign out
+				</div>
+			<% end %>
+		</li> 
+		  
+              </ul>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+          <% else %>
+
+          <% end %>
