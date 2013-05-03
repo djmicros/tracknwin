@@ -93,7 +93,11 @@ class UsersController < ApplicationController
 
 	end	
   
-  
+   def search
+	q = "%#{params[:search]}%"
+	@results = User.where("name like ? or email like ?", q, q)
+	@users = @results.paginate(page: params[:page])
+   end
   
   private
 

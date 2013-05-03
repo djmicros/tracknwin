@@ -1,6 +1,5 @@
-<% provide(:title, 'All users') %>
-<h1>All users</h1>
-
+<% provide(:title, 'Found users') %>
+<h1>Found users</h1> 
 
 <%= form_tag :controller => 'users', :action => 'search' do %>  
   <p>  
@@ -9,6 +8,7 @@
 <% end %>  
 </br>
 <div class="centered">
+<% if @users.any? %>
 <%= will_paginate %>
 </div>
 <ul class="users">
@@ -17,3 +17,7 @@
 <div class="centered">
 <%= will_paginate %>
 </div>
+<% else %>
+</br>
+<p>Nothing found... Try again!</p>
+<% end %>
