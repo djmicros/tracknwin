@@ -171,7 +171,7 @@ input {
   margin: 0;
   li {
     overflow: auto;
-    padding: 10px 0;
+    padding: 5px 0;
     border-top: 1px solid $grayLighter;
     &:last-child {
       border-bottom: 1px solid $grayLighter;
@@ -220,15 +220,27 @@ width: 100px;
 }
 
 .sub-nav ul a:hover {
-backgroud-color: #555;
+background-color: #555;
 text-decoration: none;
+}
+
+.nav-active {
+height: 100px;
+background-color: #555;
+}
+
+.invite_notification {
+float: left;
+z-index: 10;
+margin-left: 70px;
+position: absolute;
 }
 
 .batch {
 text-align:center;
 }
 
-.profile {
+.profile-icon {
 background-image: url('/assets/profile.png');
 display: inline-block;
 height: 40px;
@@ -236,7 +248,7 @@ width: 40px;
 margin: 0px 30px 0px 30px;
 }
 
-.rides {
+.rides-icon {
 background-image: url('/assets/rides.png');
 display: inline-block;
 height: 40px;
@@ -244,7 +256,7 @@ width: 40px;
 margin: 0px 30px 0px 30px;
 }
 
-.stats {
+.stats-icon {
 background-image: url('/assets/stats.png');
 display: inline-block;
 height: 40px;
@@ -252,7 +264,7 @@ width: 40px;
 margin: 0px 30px 0px 30px;
 }
 
-.users {
+.users-icon {
 background-image: url('/assets/users.png');
 display: inline-block;
 height: 40px;
@@ -260,7 +272,7 @@ width: 40px;
 margin: 0px 30px 0px 30px;
 }
 
-.friends {
+.friends-icon {
 background-image: url('/assets/friends.png');
 display: inline-block;
 height: 40px;
@@ -268,7 +280,7 @@ width: 40px;
 margin: 0px 30px 0px 30px;
 }
 
-.settings {
+.settings-icon {
 background-image: url('/assets/settings.png');
 display: inline-block;
 height: 40px;
@@ -276,7 +288,7 @@ width: 40px;
 margin: 0px 30px 0px 30px;
 }
 
-.signout {
+.signout-icon {
 background-image: url('/assets/signout.png');
 display: inline-block;
 height: 40px;
@@ -284,13 +296,18 @@ width: 40px;
 margin: 0px 30px 0px 30px;
 }
 
-.row {
+.site-container {
 margin-top: -90px;
 background-color: white;
-min-height: 100px;
+min-height: 200px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
     border-radius: 10px;
 padding: 20px 20px 20px 20px;
+width: 1150px;
+}
+
+.centered {
+text-align: center;
 }

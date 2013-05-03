@@ -6,55 +6,60 @@
        <nav>
         <ul class="sub-nav">
 		
-		<li>
+		<li class="<%= "nav-active" if params[:controller] == "users" && params[:action] == "show" %>">
 			<%= link_to current_user do%>
 			<div class="batch">
-			<i class="profile"></i>
+			<i class="profile-icon"></i>
 			<br>
 			Profile
 			</div>
 			<% end %>
 		</li>
-		<li>
+		<li class="<%= "nav-active" if params[:controller] == "rides" && params[:action] == "index" %>">
 			<%= link_to current_user do%>
 				<div class="batch">
-				<i class="rides"></i>
+				<i class="rides-icon"></i>
 				<br>
 				Rides
 				</div>
 			<% end %>
 		</li>
-		<li>
+		<li class="<%= "nav-active" if params[:controller] == "users" && params[:action] == "delete" %>">
 			<%= link_to current_user do%>
 				<div class="batch">
-				<i class="stats"></i>
+				<i class="stats-icon"></i>
 				<br>
 				Stats
 				</div>
 			<% end %>
 		</li>
-		<li>
+		<li class="<%= "nav-active" if params[:controller] == "users" && params[:action] == "index" %>">
 			<%= link_to users_path do%>
 				<div class="batch">
-				<i class="users"></i>
+				<i class="users-icon"></i>
 				<br>
 				Users
 				</div>
 			<% end %>
 		</li>
-		<li>
+		<li class="<%= "nav-active" if params[:controller] == "friendships" %>">
 			<%= link_to friends_path do%>
 				<div class="batch">
-				<i class="friends"></i>
+				<% if current_user.pending_invited_by.empty? != true %>
+				<div class="invite_notification label label-important pull-right">
+				<%= current_user.pending_invited_by.count %>
+				</div>
+				<% end %>
+				<i class="friends-icon"></i>
 				<br>
 				Friends
 				</div>
 			<% end %>
 		</li>
-		<li>
+		<li class="<%= "nav-active" if params[:controller] == "users" && params[:action] == "edit" %>">
 			<%= link_to edit_user_path(current_user) do%>
 				<div class="batch">
-				<i class="settings"></i>
+				<i class="settings-icon"></i>
 				<br>
 				Settings
 				</div>
@@ -63,7 +68,7 @@
 		<li>
 			<%= link_to signout_path, method: "delete" do%>
 				<div class="batch">
-				<i class="signout"></i>
+				<i class="signout-icon"></i>
 				<br>
 				Sign out
 				</div>
