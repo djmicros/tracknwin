@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no"></meta>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+
+	<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj1VhTA5l4MKf9AloiQ81JkHvjXMedSI4&sensor=true">
+    </script>  
+	
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+	<%= render 'layouts/sub-nav' %>
+    <div class="container <% if signed_in? %>well site-container <% end %> ">
+	      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %>
+	<%= render 'layouts/footer' %>
+    </div>
+	      <%= debug(params) if Rails.env.development? %>
+  </body>
+</html>

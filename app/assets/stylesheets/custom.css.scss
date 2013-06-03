@@ -316,3 +316,27 @@ text-align: center;
 width: 300px;
 float: left;
 }
+
+#map-canvas {
+width: 720px;
+height: 480px;
+display: block;
+float: right;
+margin-top: 20px;
+}
+
+.ride-data {
+min-height: 500px;
+}
+
+.rideinfo {
+height: 60px;
+width: 400px;
+margin: 5px;
+padding: 10px;
+}
+
+#rideinfo_icon {
+float: left;
+margin-right: 10px;
+}
