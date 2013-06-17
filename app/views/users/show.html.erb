@@ -4,9 +4,16 @@
     <section>
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>	
+        <h1> <%= @user.name %> </h1>
+		<h5> <%= @user_age %> years old <%= @user_gender %> from <%= @user.country %> </h5>
 		<%= render 'users/friendships' %> 
       </h1>
     </section>
   </aside>
 </div>
+
+  <div class="well" id="show_user_rides">
+  <h3> <%= @user.name.split[0] %>'s recent rides: </h3>
+  </br>
+  <%= @rides.all %>
+  </div>

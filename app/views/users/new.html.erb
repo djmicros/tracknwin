@@ -3,20 +3,37 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
+    <%= simple_form_for @user do |f| %>
 	      <%= render 'shared/error_messages' %>
+		  
+ 
+	  <%= f.input :name, :error => false%>
+			  
+	  <%= f.label :gender %>	  
+      <%= f.collection_radio_buttons(
+      :gender, [['M', 'icon_male'], ['F', 'icon_female']], :first, :last, :item_wrapper_class => 'pull-left'
+		) do |b|
+			b.label { image_tag("/assets/#{b.text}.png") + b.radio_button }
+		end
+	  %>
+	  </br>
+	  </br>
+	  </br>
+	  
+	  <%= f.input :country, :error => false %>
+	  
+		  
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.input :birthdate, as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year - 18, :error => false, :class => "birthdate" %>
+	  
+	  <%= f.input :team, :error => false %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.input :email, :error => false %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+	  <%= f.input :password, :error => false %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
+	  <%= f.input :password_confirmation, :error => false %>
 
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>

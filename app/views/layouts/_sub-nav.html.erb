@@ -16,7 +16,7 @@
 			<% end %>
 		</li>
 		<li class="<%= "nav-active" if params[:controller] == "rides" && params[:action] == "index" %>">
-			<%= link_to current_user do%>
+			<%= link_to  :controller => :rides, :action => :index, :user_id => current_user.id do%>
 				<div class="batch">
 				<i class="rides-icon"></i>
 				<br>

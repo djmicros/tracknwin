@@ -12,6 +12,9 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+	@user_age = calculate_user_age(@user.birthdate)
+	@user_gender = calculate_user_gender(@user.gender)
+	@rides = @user.rides
   end
   
   def create
@@ -98,6 +101,25 @@ class UsersController < ApplicationController
 	@results = User.where("name like ? or email like ?", q, q)
 	@users = @results.paginate(page: params[:page])
    end
+   
+   	def calculate_user_age(bd)
+    # Difference in years, less one if you have not had a birthday this year.
+	d = Time.now
+    a = d.year - bd.year
+    a = a - 1 if (
+         bd.month >  d.month or 
+        (bd.month >= d.month and bd.day > d.day)
+    )
+    a
+	end
+	
+	def calculate_user_gender(g)
+	if g == "M" 
+	gender = "male"
+	else
+	gender = "female"
+	end
+	end
   
   private
 
@@ -116,4 +138,8 @@ class UsersController < ApplicationController
 	def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
+	
+
+
+
 end

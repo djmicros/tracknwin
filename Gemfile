@@ -18,6 +18,8 @@ gem 'bootstrap-will_paginate', '0.0.6'
 
 gem 'amistad'
 
+gem 'simple_form'
+gem 'country_select'
 
 # Gems used only for assets and not required
 # in production environments by default.

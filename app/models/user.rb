@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :rides, dependent: :destroy
 	
-  attr_accessible :name, :email, :password, :password_confirmation, :apptoken
+  attr_accessible :name, :email, :password, :password_confirmation, :gender, :birthdate, :team, :country
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -17,7 +17,11 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
   validates_confirmation_of :password
-  
+  validates :gender, presence: true
+  VALID_BIRTHDATE_REGEX = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/
+  validates :birthdate, presence: true, 
+					format:     { with: VALID_BIRTHDATE_REGEX }
+  validates :country, presence: true
   private
 
     def create_remember_token
