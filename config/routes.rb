@@ -20,6 +20,7 @@ Tracknwin::Application.routes.draw do
   match '/androidaddride', to: 'rides#androidaddride'
   match '/rides/:id' => 'rides#show'
   post 'users/search'
+  post 'microposts/create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

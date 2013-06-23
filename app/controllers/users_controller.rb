@@ -15,12 +15,15 @@ class UsersController < ApplicationController
 	@user_age = calculate_user_age(@user.birthdate)
 	@user_gender = calculate_user_gender(@user.gender)
 	@rides = @user.rides
+	@microposts = @user.microposts.paginate(:per_page => 5, page: params[:page])
+    @micropost = current_user.microposts.build if signed_in?
   end
   
   def create
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
+	  @user.microposts.create(:content => @user.name + " joined tracknwin community!")
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else

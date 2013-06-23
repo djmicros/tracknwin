@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   include Amistad::FriendModel
   
   has_many :rides, dependent: :destroy
+  
+  has_many :microposts, dependent: :destroy
 	
   attr_accessible :name, :email, :password, :password_confirmation, :gender, :birthdate, :team, :country
   has_secure_password

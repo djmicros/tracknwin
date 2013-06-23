@@ -11,26 +11,21 @@
     </section>
   </aside>
 </div>
-
-  <div class="well" id="show_user_rides">
-  <h3> <%= @user.name.split[0] %>'s recent rides: </h3>
-  </br>
-    <div class="well centered">
-<%= calendar_for(@rides) do |t| %>
-  <%= t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
-  <%= t.day(:day_method => :created_at) do |day, tasks| %>
-    <%= day.day %>
-    <% tasks.each do |task| %>
-      
-	  <%= link_to  :controller => :rides, :action => :show, :id => task.id do%>
-	  <div class="ride_icon_in_calendar">
-	  </div>
-			<% end %>
-			
-
+<% if signed_in? && @user == current_user %>
+    <aside class="span8">
+      <section>
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+<% end %> 
+</br>
+  <div class="span8">
+    <% if @user.microposts.any? %>
+      <h3>What's up with <%= @user.name %> ?? (<%= @user.microposts.count %>)</h3>
+      <ul class="microposts">
+        <%= render @microposts %>
+	  </ul>
+      <%= will_paginate @microposts %>
     <% end %>
-  <% end %>
-<% end %>
-  
   </div>
     </div>

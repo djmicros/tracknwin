@@ -1,0 +1,5 @@
+<%= form_tag :controller => 'microposts', :action => 'create' do  %>  
+  <p>  
+    <%= text_field_tag :content, params[:micropost], :class => 'search-query user_search_form pull_left', :placeholder => "What's up with you...?" %>  
+  </p> 
+<% end %>
