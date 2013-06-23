@@ -15,5 +15,22 @@
   <div class="well" id="show_user_rides">
   <h3> <%= @user.name.split[0] %>'s recent rides: </h3>
   </br>
-  <%= @rides.all %>
+    <div class="well centered">
+<%= calendar_for(@rides) do |t| %>
+  <%= t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
+  <%= t.day(:day_method => :created_at) do |day, tasks| %>
+    <%= day.day %>
+    <% tasks.each do |task| %>
+      
+	  <%= link_to  :controller => :rides, :action => :show, :id => task.id do%>
+	  <div class="ride_icon_in_calendar">
+	  </div>
+			<% end %>
+			
+
+    <% end %>
+  <% end %>
+<% end %>
+  
   </div>
+    </div>

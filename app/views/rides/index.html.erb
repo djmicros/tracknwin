@@ -1,3 +1,33 @@
 <% provide(:title, @user.name + ": Rides") %>
-<%= @rides %>
+<div class="row">
+</div>
+  <div id="show_user_rides">
+    <h3> <%= @user.name.split[0] %>'s rides: </h3>
+  </br>
+    <div class="well centered">
+  <h3 id="month">
+    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%B %Y") %>
+    <%=h @date.strftime("%B %Y") %>
+	<% if @date.end_of_month+1 < Date.today %>
+    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%B %Y") %>
+	<% end %>
+  </h3>
+<%= calendar_for(@rides, :year => @date.year, :month => @date.month) do |t| %>
+  <%= t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
+  <%= t.day(:day_method => :created_at) do |day, tasks| %>
+    <%= day.day %>
+    <% tasks.each do |task| %>
+      
+	  <%= link_to  :controller => :rides, :action => :show, :id => task.id do%>
+	  <div class="ride_icon_in_calendar">
+	  </div>
+			<% end %>
+			
+
+    <% end %>
+  <% end %>
+<% end %>
+  
+  </div>
+</div>
 

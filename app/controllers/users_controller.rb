@@ -103,7 +103,6 @@ class UsersController < ApplicationController
    end
    
    	def calculate_user_age(bd)
-    # Difference in years, less one if you have not had a birthday this year.
 	d = Time.now
     a = d.year - bd.year
     a = a - 1 if (

@@ -3,6 +3,7 @@ class RidesController < ApplicationController
 	def index
     @user = User.find(params[:user_id])
 	@rides = @user.rides
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
 	end
 	
 	def show

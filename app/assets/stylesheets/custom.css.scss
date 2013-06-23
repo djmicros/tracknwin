@@ -344,3 +344,37 @@ margin-right: 10px;
 .date.required{
 width: 110px;
 }
+
+#show_user_rides tr {
+height: 60px;
+padding-top: 20px;
+}
+
+#show_user_rides thead tr {
+width: 150px;
+height: 20px;
+}
+
+#show_user_rides td {
+width: 150px;
+height: 40px;
+border: dotted 1px;
+text-align: left;
+vertical-align: top;
+padding-top: 20px;
+}
+
+#show_user_rides td.notmonth {
+opacity: 50%;
+border: none;
+color: grey;
+}
+
+.ride_icon_in_calendar {
+width: 40px;
+height: 40px;
+float: right;
+background-image: url('/assets/ride_calendar.png');
+}
+
+

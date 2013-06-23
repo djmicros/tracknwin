@@ -118,6 +118,7 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    watu_table_builder (0.3.0)
     will_paginate (3.0.3)
 
 PLATFORMS
@@ -138,4 +139,5 @@ DEPENDENCIES
   simple_form
   sqlite3 (= 1.3.5)
   uglifier (>= 1.0.3)
+  watu_table_builder
   will_paginate (= 3.0.3)

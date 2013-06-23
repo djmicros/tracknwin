@@ -20,6 +20,7 @@ gem 'amistad'
 
 gem 'simple_form'
 gem 'country_select'
+gem "watu_table_builder", :require => "table_builder"
 
 # Gems used only for assets and not required
 # in production environments by default.
