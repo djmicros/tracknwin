@@ -4,6 +4,7 @@ Tracknwin::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :friends, :controller => 'friendships', :except => [:show, :edit]
+  resources :microposts, only: [:create, :destroy]
   
   root to: 'static_pages#home'
   
@@ -21,7 +22,6 @@ Tracknwin::Application.routes.draw do
   match '/rides/:id' => 'rides#show'
   post 'users/search'
   post 'microposts/create'
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
