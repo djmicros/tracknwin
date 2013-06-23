@@ -26,6 +26,8 @@ class FriendshipsController < ApplicationController
   def update
     inviter = User.find_by_id(params[:id])
     if current_user.approve inviter
+	  current_user.microposts.create(:content => current_user.name + " became a friend with " + inviter.name + ".")
+	  inviter.microposts.create(:content => inviter.name + " became a friend with " + current_user.name + ".")
 	  flash[:success] = "Successfully confirmed friend!"
       redirect_to friends_path
     else
