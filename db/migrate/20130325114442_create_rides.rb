@@ -1,7 +1,7 @@
 class CreateRides < ActiveRecord::Migration
   def change
     create_table :rides do |t|
-      t.string :body
+      t.text :body
       t.integer :user_id
 
       t.timestamps
