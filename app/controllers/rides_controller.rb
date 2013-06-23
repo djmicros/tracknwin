@@ -1,4 +1,5 @@
 class RidesController < ApplicationController
+skip_before_filter :verify_authenticity_token, :only => [:androidaddride]
 	
 	def index
     @user = User.find(params[:user_id])
