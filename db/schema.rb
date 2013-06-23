@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20130623134325) do
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
 
   create_table "rides", :force => true do |t|
-    t.string   "body"
+    t.text   "body"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
