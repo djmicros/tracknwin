@@ -27,7 +27,8 @@ class RidesController < ApplicationController
 					if newride.save
 					ride_elements = getrideelements(newride.body)
 					ride_distance = calc_distance(ride_elements)
-					user.microposts.create(:content => @user.name + " finished " + ride_distance + " ride.")
+					ride_time = calc_time(ride_elements)
+					user.microposts.create(:content => user.name + " finished " + ride_distance.to_s + " km ride in " + ride_time[2].to_s + " .")
 					render :inline => "true"
 					else
 					render :inline => "false"
