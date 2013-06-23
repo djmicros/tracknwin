@@ -25,7 +25,7 @@ class RidesController < ApplicationController
 				if user.authenticate(password)
 					newride = Ride.new("body" => body, "user_id" => user.id)
 					if newride.save
-					ride_elements = getrideelements(newride)
+					ride_elements = getrideelements(newride.body)
 					ride_distance = calc_distance(ride_elements)
 					user.microposts.create(:content => @user.name + " finished " + ride_distance + " ride.")
 					render :inline => "true"
