@@ -19,7 +19,7 @@
     </aside>
 <% end %> 
 </br>
-  <div class="span8">
+  <div class="span7">
     <% if @user.microposts.any? %>
       <h3>What's up with <%= @user.name %> ?? (<%= @user.microposts.count %>)</h3>
       <ul class="microposts">
@@ -27,5 +27,30 @@
 	  </ul>
       <%= will_paginate @microposts %>
     <% end %>
+  </div>
+   <div class="span7">
+      <h3><%= @user.name %>'s stats:</h3>
+	  
+	  
+<div class="rideinfo" id="distance">
+<small>Overall distance:</small>
+</br>
+<img id="rideinfo_icon" src='/assets/distance.png'></img>
+<h3><%= @user_stats[0] %> km</h3>
+</div>
+
+<div class="rideinfo" id="time">
+<small>Overall Duration:</small>
+</br>
+<img id="rideinfo_icon" src='/assets/time.png'></img>
+<h3><%= @user_stats[1].to_i %> minutes = <%= @user_stats[1].to_i/60.round(2) %> hours</h3>
+</div>
+
+<div class="rideinfo" id="speed">
+<small>Average speed:</small>
+</br>
+<img id="rideinfo_icon" src='/assets/speed.png'></img>
+<h3><%= @user_stats[2] %> km/h</h3>
+</div>
   </div>
     </div>

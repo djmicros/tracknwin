@@ -24,21 +24,22 @@ skip_before_filter :verify_authenticity_token, :only => [:androidaddride]
 		if User.find_by_email(username) != nil
 			user = User.find_by_email(username)
 				if user.authenticate(password)
-					newride = Ride.new("body" => body, "user_id" => user.id)
-					if newride.save
-					ride_elements = getrideelements(newride.body)
+					ride_elements = getrideelements(body)
 					ride_distance = calc_distance(ride_elements)
 					ride_time = calc_time(ride_elements)
+					ride_speed = calc_speed(ride_time, ride_distance)
+					newride = Ride.new("body" => body, "user_id" => user.id, "distance" => ride_distance, "duration" => ride_time[0], "speed" => ride_speed)
+					if newride.save
 					user.microposts.create(:content => user.name + " finished " + ride_distance.to_s + " km ride in " + ride_time[2].to_s + ".")
-					render :inline => "true"
+					render :inline => "Ride Successfully added!"
 					else
-					render :inline => "false"
+					render :inline => "There was an error!"
 					end
 				else
-					render :inline => "false"
+					render :inline => "Authentication problem!"
 				end
 		else
-			render :inline => "false"
+			render :inline => "Authentication problem!"
 		end
 	else
 	redirect_to signin_url, notice: "There is no place for you ;)"
@@ -98,4 +99,5 @@ skip_before_filter :verify_authenticity_token, :only => [:androidaddride]
 	speed = (60*distance.to_f)/time.to_f
 	speed.round(2)
 	end
+	
 end
