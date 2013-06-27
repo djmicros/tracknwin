@@ -1,4 +1,4 @@
-<% provide(:title, @ride.id.to_s + ": Rides") %>
+<% provide(:title, "Ride: " + @ride.created_at.to_s[0,10]) %>
 
 <div class="ride-data">
 <h3>Your ride information:</h3>

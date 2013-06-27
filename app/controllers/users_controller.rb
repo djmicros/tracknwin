@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 	@rides = @user.rides
 	@microposts = @user.microposts.paginate(:per_page => 4, page: params[:page])
     @micropost = current_user.microposts.build if signed_in?
-	@user_stats = calculate_stats(@user)
+	@user_stats = User.calculate_stats(@user)
   end
   
   def create
@@ -124,30 +124,7 @@ class UsersController < ApplicationController
 	end
 	end
 	
-	def calculate_stats(user)
-	rides = user.rides
-	if rides.count == 0
-	@stats = []
-	@stats[0] = 0
-	@stats[1] = 0
-	@stats[2] = 0
-	else
-	@distance_sum = 0
-	@duration_sum = 0
-	@speed_sum = 0
-	(0..rides.count-1).each do |i|
-	@distance_sum = @distance_sum + rides[i].distance.to_f
-	@duration_sum = @duration_sum + rides[i].duration.to_f
-	@speed_sum = @speed_sum + rides[i].speed.to_f
-	end
-	@avg_speed = @speed_sum/rides.count
-	@stats = []
-	@stats[0] = @distance_sum.round(2)
-	@stats[1] = @duration_sum
-	@stats[2] = @avg_speed.round(2)
-	return @stats
-	end
-	end
+	
   
   private
 

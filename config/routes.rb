@@ -1,4 +1,6 @@
 Tracknwin::Application.routes.draw do
+  get "stats/index"
+
   resources :users do
 	resources :rides
   end
@@ -20,8 +22,11 @@ Tracknwin::Application.routes.draw do
   match '/androidregister', to: 'users#androidregister'
   match '/androidaddride', to: 'rides#androidaddride'
   match '/rides/:id' => 'rides#show'
+  match '/stats' => 'stats#index'
   post 'users/search'
   post 'microposts/create'
+  post 'stats/create'
+  post 'stats/index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

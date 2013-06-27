@@ -24,8 +24,8 @@
 				</div>
 			<% end %>
 		</li>
-		<li class="<%= "nav-active" if params[:controller] == "users" && params[:action] == "delete" %>">
-			<%= link_to current_user do%>
+		<li class="<%= "nav-active" if params[:controller] == "stats" && params[:action] == "index" %>">
+			<%= link_to stats_path do%>
 				<div class="batch">
 				<i class="stats-icon"></i>
 				<br>

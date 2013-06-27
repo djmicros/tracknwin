@@ -1,0 +1,118 @@
+<% provide(:title, "Tournament statistics") %>
+
+<h1>Statistics:</h1> 
+
+<div class="row centered">
+  <div class="well well-large customize_stats">
+  <div id="stats_form">
+  <h5>Prepare your own stats:</h5>
+    <%= simple_form_for @stats, :url => url_for(:controller => 'stats', :action => 'create') do |f| %>
+	
+	<div class="horizontal-input">		  
+     <%= f.input :male, as: :boolean, :required => false do
+  f.check_box :male, {}, "true"
+end %>
+  </div>
+
+<div class="horizontal-input">
+     <%= f.input :female, as: :boolean, :required => false do
+  f.check_box :female, {}, "true"
+end %>
+  </div>
+
+	  <div class="horizontal-input">
+	  <%= f.input :country, :error => false, :required => false, :input_html => { :class => "span3 pull-left"} %>  
+	   </div>
+	   
+		<div class="horizontal-input">
+      <%= f.input :age1, as: :integer, :error => false, :required => false, :label => "Min. age", :input_html => { :class => "span1 pull-left"} %>
+	    </div>
+	  
+	  <div class="horizontal-input">
+	  <%= f.input :age2, as: :integer, :error => false, :required => false, :label => "Max. age", :input_html => { :class => "span1 pull-lef" } %>
+	    </div>
+	  
+	  <div class="horizontal-input">
+	  <%= f.input :team, :error => false, :required => false, :input_html => { :class => "span3 pull-left"} %>
+  </div>
+  
+  	  <div class="horizontal-input">
+  <%= f.input :sort, collection: ["Distance", "Duration", "Speed"], :error => false, :required => false, :input_html => { :class => "span2 pull-left"} %>
+    </div>
+	  
+	  <div class="horizontal-input">
+	  </br>
+      <%= f.submit "Prepare stats", class: "btn btn-primary" %>
+	    </div>
+    <% end %>
+	</div>
+  </div>
+</div>
+
+<table class="table">
+<tr>
+    <td>
+     <h5>#</h5>
+    </td>
+    <td>
+     <h5>Name</h5>
+    </td>
+	<td>
+      <h5>Gender</h5>
+    </td>
+	<td>
+      <h5>Age</h5>
+    </td>
+	<td>
+      <h5>Country</h5>
+    </td>
+	<td>
+      <h5>Team</h5>
+    </td>
+	<td>
+      <h5>Distance</h5>
+    </td>
+	<td>
+      <h5>Duration</h5>
+    </td>
+	<td>
+      <h5>Avg. speed</h5>
+    </td>
+  </tr>
+
+<% @users.each_with_index do |elem, i| %>
+  <tr>
+    <td>
+      <%= i+1 %>.
+    </td>
+    <td>
+	<%= link_to elem["name"], user_path(:id => elem["id"]) %>
+    </td>
+	<td>
+      <% if elem["gender"] == "M" %>
+	  Male
+	  <% else %>
+	  Female
+	  <% end %>
+    </td>
+	<td>
+      <%= Date.today.year - elem["birthdate"].to_date.year %>
+    </td>
+	<td>
+      <%= elem["country"] %>
+    </td>
+	<td>
+      <%= elem["team"] %>
+    </td>
+	<td>
+      <%= elem[:distance] %> km
+    </td>
+	<td>
+      <%= (elem[:duration]/60).round(1) %> h
+    </td>
+	<td>
+      <%= elem[:speed].round(1) %> km/h
+    </td>
+  </tr>
+<% end %>
+</table>
