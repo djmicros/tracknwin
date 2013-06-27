@@ -1,5 +1,6 @@
 class StatsController < ApplicationController
-
+  before_filter :signed_in_user, only: [:index, :create]
+  
   def index
   @stats = Stats.new
   @params = 0
